@@ -18,20 +18,26 @@
     //Creates a <label> element with text from the input field and a checkbox then appends it to div "list"
     function addTask(){
       if ((checkIfEmpty($("#new").val()))) {
+        //Creates all the elements needed for a new row
+        let newListRow = document.createElement("div");
         let newListItem = document.createElement("label");
         let newCheckBox = document.createElement("input");
-        //Creates a dividing line under each list item
+        let newTrash = document.createElement("button");
         let newLineBreak = document.createElement("hr")
+        newListRow.classList.add("listRow");
         //Links the label and checkbox together making the label clickable
         newCheckBox.setAttribute("id", itemIndex);
         newListItem.setAttribute("for", itemIndex);
         itemIndex++;
         newCheckBox.setAttribute("type", "checkbox");
-        newLineBreak.classList.add("lineBreak");
         newListItem.textContent = $("#new").val();
-        $("#list").append(newCheckBox);
-        $("#list").append(newListItem);
-        $("#list").append(newLineBreak);
+        newTrash.classList.add("trashCan");
+        newLineBreak.classList.add("lineBreak");
+        $(newListRow).append(newCheckBox);
+        $(newListRow).append(newListItem);
+        $(newListRow).append(newTrash);
+        $(newListRow).append(newLineBreak);
+        $("#list").append(newListRow);
 
         //Clears input field after inputting a new list item
         document.getElementById("new").value = "";
@@ -44,6 +50,11 @@
     function checkIfEmpty(str) {
       return str.trim().length;
     }
+
+    //Deletes row when trash can is clicked
+    $(document).on("click", ".trashCan", function() {
+      this.parentNode.remove();
+    });
 
     //Function that returns a string with the date using javascript's date object
     function getDate(){

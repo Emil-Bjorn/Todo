@@ -13,11 +13,19 @@ body {
 
 #list {
     display: grid;
-    grid-template-columns: 30px 1fr;
+/*     grid-template-columns: 30px 1fr 30px;
+    max-width: 300px; */
+    row-gap: 20px;
+/*     column-gap: 5px;
+    overflow: hidden; */
+}
+
+.listRow {
+    display: grid;
+    grid-template-columns: 30px 1fr 25px;
     max-width: 300px;
-    row-gap: 10px;
     column-gap: 5px;
-    overflow: hidden;
+/*     overflow: hidden; */
 }
 
 
@@ -25,7 +33,7 @@ body {
     display: grid;
     grid-template-columns: 300px;
     justify-content: center;
-    row-gap: 10px;
+    row-gap: 25px;
 
 }
 
@@ -50,8 +58,10 @@ input:checked + label {
     color: #9c9f9b;
 }
 
-.lineBreak{
-    grid-column: span 2;
+.lineBreak {
+    position: relative;
+    top: 10px;
+    grid-column: span 3;
     border: #f36b2c 1px solid;
     opacity: 50%;
     width: 300px;
@@ -83,6 +93,16 @@ input[type=text]:focus {
     bottom: 40px;
     left: 260px;
     cursor: pointer;
+}
+
+.trashCan {
+    background-image: url("trash.png");
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    align-self: center;
 }
 
 
