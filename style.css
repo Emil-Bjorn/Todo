@@ -42,26 +42,12 @@ label {
     overflow: hidden;
     font-size: 150%;
     cursor: pointer;
-/*     position: relative; */
+    transition: color 1s;
 }
 
-/* label::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 3px;
-
-    background-color: #f36b2c;
-
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transition: width 300ms ease;
+input:checked + label {
+    color: #9c9f9b;
 }
-
-:checked + label::after {
-    width: 100%;
-} */
 
 .lineBreak{
     grid-column: span 2;
