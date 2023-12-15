@@ -77,6 +77,9 @@
         $(newListRow).append(newLineBreak);
         $("#list").append(newListRow);
 
+        //Animates new task
+        $(newListRow).addClass("fadeIn");
+
         //Saves new task to local storage
         let taskObj = {"id":newCheckBox.getAttribute("id"), "label":newListItem.textContent};
         taskArray.push(taskObj);
@@ -96,12 +99,16 @@
 
     //Deletes row when trash can is clicked and removes task from taskArray
     $(document).on("click", ".trashCan", function() {
-      let deletedTaskID = this.parentNode.firstChild.id
-      taskArray = taskArray.filter(function(task) {
-        return task.id != deletedTaskID;
-      })
-      localStorage.setItem("taskArray", JSON.stringify(taskArray));
-      this.parentNode.remove();
+      let deletedTaskID = this.parentNode.firstChild.id;
+      //Plays animation and delays task removal by 0.49 seconds so the animation can play
+      $(this.parentNode).addClass("fadeOut");
+      setTimeout(() => {
+        taskArray = taskArray.filter(function(task) {
+          return task.id != deletedTaskID;
+        })
+        localStorage.setItem("taskArray", JSON.stringify(taskArray));
+        this.parentNode.remove();
+      }, 490)
     });
 
     //Function that returns a string with the date using javascript's date object
