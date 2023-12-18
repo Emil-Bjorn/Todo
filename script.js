@@ -11,7 +11,7 @@
       taskArray = JSON.parse(localStorage.getItem("taskArray"));
     }
 
-    //Loops through taskArray and adds saved tasks to list
+    //Loops through taskArray in local storage and adds saved tasks to list when page is opened
     function initializeList() {
       taskArray.forEach((task) => {
         //Creates all the elements needed for a new row
@@ -26,6 +26,10 @@
         newCheckBox.setAttribute("id", task.id);
         newListItem.setAttribute("for", task.id);
         newCheckBox.setAttribute("type", "checkbox");
+        //Checks if the task is checked or not in local storage
+        if (task.checked == true) {
+          newCheckBox.checked = true;
+        }
         newListItem.textContent = task.label;
         newTrash.classList.add("trashCan");
         newLineBreak.classList.add("lineBreak");
@@ -81,7 +85,7 @@
         $(newListRow).addClass("fadeIn");
 
         //Saves new task to local storage
-        let taskObj = {"id":newCheckBox.getAttribute("id"), "label":newListItem.textContent};
+        let taskObj = {"id":newCheckBox.getAttribute("id"), "label":newListItem.textContent, "checked":false};
         taskArray.push(taskObj);
         localStorage.setItem("taskArray", JSON.stringify(taskArray));
 
@@ -96,6 +100,16 @@
     function checkIfEmpty(str) {
       return str.trim().length;
     }
+
+    //Checks if checkbox is checked or not and saves information to local storage
+    $(document).on("click", "input:checkbox", function() {
+      for (let task of taskArray) {
+        if (task.id == this.id) {
+          task.checked = $(this).prop("checked");
+          localStorage.setItem("taskArray", JSON.stringify(taskArray));
+        }
+      }
+    });
 
     //Deletes row when trash can is clicked and removes task from taskArray
     $(document).on("click", ".trashCan", function() {
