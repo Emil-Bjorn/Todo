@@ -1,0 +1,138 @@
+body {
+    background-color: #3f3f37;
+}
+
+#currentDate {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    color: #ecf0f1;
+    text-align: center;
+    font-size: 200%;
+    margin: 20px;
+}
+
+#list {
+    display: grid;
+/*     grid-template-columns: 30px 1fr 30px;
+    max-width: 300px; */
+    row-gap: 20px;
+/*     column-gap: 5px;
+    overflow: hidden; */
+}
+
+.listRow {
+    display: grid;
+    grid-template-columns: 30px 1fr 25px;
+    max-width: 300px;
+    column-gap: 5px;
+/*     overflow: hidden; */
+}
+
+
+#listAndInput {
+    display: grid;
+    grid-template-columns: 300px;
+    justify-content: center;
+    row-gap: 25px;
+
+}
+
+input[type=checkbox] {
+    accent-color: #f36b2c;
+    max-width: 25px;
+    cursor: pointer;
+}
+
+label {
+    font-family: 'Ubuntu', sans-serif;
+    color: #ecf0f1;
+    width: fit-content;
+    max-width: 270px;
+    overflow: hidden;
+    font-size: 150%;
+    cursor: pointer;
+    transition: color 1s;
+}
+
+input:checked + label {
+    color: #9c9f9b;
+}
+
+.lineBreak {
+    position: relative;
+    top: 10px;
+    grid-column: span 3;
+    border: #f36b2c 1px solid;
+    opacity: 50%;
+    width: 300px;
+}
+
+input[type=text] {
+    font-family: 'Ubuntu', sans-serif;
+    color: #ecf0f1;
+    width: 280px;
+    height: 28px;
+    font-size: 150%;
+    border: #ecf0f1 1px solid;
+    background-color: #3f3f37;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+input[type=text]:focus {
+    outline: #f36b2c solid 1px;
+}
+
+#addTask {
+    background-image: url("plus.png");
+    background-color: transparent;
+    border: none;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: 40px;
+    left: 260px;
+    cursor: pointer;
+}
+
+.trashCan {
+    background-image: url("trash.png");
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+}
+
+.fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.fadeOut {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
